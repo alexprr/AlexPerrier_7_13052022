@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Les petits plats | Des recettes à portée de clic</title>
+    <link
+      rel="shortcut icon"
+      href="/src/assets/icons/favicon.svg"
+      type="image/svg"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/src/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header__wrapper">
+        <a href="/src/index.html" class="header__link"
+          ><img src="/src/assets/img/logo.svg" alt="Logo - Les petits plats"
+        /></a>
+      </div>
+    </header>
+
+    <!-- Main content -->
+    <main>
+      <div class="main__wrapper">
+        <!-- Main searchbar -->
+        <form class="searchbar">
+          <input type="search" class="searchbar__input" />
+          <div class="search-icon__wrapper">
+            <button class="search-icon__btn">
+              <img src="/src/assets/icons/search.svg" alt="" />
+            </button>
+          </div>
+        </form>
+        <!-- Dropdown tags selectors -->
+        <div class="tags__wrapper">
+          <div class="tags__dropdown">
+            <input
+              type="text"
+              class="tags__dropdown__search"
+              placeholder="Rechercher un ingrédient"
+            />
+            <ul class="tags__dropdown__list1"></ul>
+            <ul class="tags__dropdown__list2"></ul>
+            <ul class="tags__dropdown__list3"></ul>
+          </div>
+          <div class="tags__dropdown__arrow">
+            <img src="/src/assets/icons/down-arrow.svg" alt="" />
+          </div>
+        </div>
+        <!-- Recipes Grid -->
+        <section id="recipes">
+          <div class="recipes__card">
+            <div class="recipes__card__head"></div>
+            <div class="recipes__card__content">
+              <div class="recipes__card__content__title">
+                <h2>Limonade de Coco</h2>
+                <div class="recipes__card__content__title__time">
+                  <img src="/src/assets/icons/clock.svg" alt="" />
+                  <p class="recipes__card__content__title__time__info">
+                    10 min
+                  </p>
+                </div>
+              </div>
+              <div class="recipes__card__content__steps">
+                <ul class="recipes__card__content__steps__list">
+                  <li>test</li>
+                  <li>test</li>
+                  <li>test</li>
+                  <li>test</li>
+                  <li>test</li>
+                </ul>
+                <div class="recipes__card__content__steps__desc">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Nemo unde ad recusandae quis dolores sed iusto harum a omnis
+                    voluptas!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Scripts -->
+
+    <!-- Data -->
+    <script src="/src/data/recipes.js"></script>
+
+    <!-- Main -->
+    <script src="/src/js/index.js"></script>
+  </body>
+</html>
