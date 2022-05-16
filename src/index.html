@@ -20,42 +20,68 @@
     <link rel="stylesheet" href="/src/css/style.css" />
   </head>
   <body>
-    <header>
+    <header class="header">
       <div class="header__wrapper">
-        <a href="/src/index.html" class="header__link"
+        <a href="/src/index.html" class="header__wrapper__link"
           ><img src="/src/assets/img/logo.svg" alt="Logo - Les petits plats"
         /></a>
       </div>
     </header>
 
     <!-- Main content -->
-    <main>
+    <main class="main">
       <div class="main__wrapper">
         <!-- Main searchbar -->
         <form class="searchbar">
-          <input type="search" class="searchbar__input" />
-          <div class="search-icon__wrapper">
-            <button class="search-icon__btn">
+          <input
+            type="search"
+            class="searchbar__input"
+            placeholder="Rechercher une recette"
+          />
+          <div class="searchbar__icon__wrapper">
+            <button class="searchbar__icon__btn">
               <img src="/src/assets/icons/search.svg" alt="" />
             </button>
           </div>
         </form>
-        <!-- Dropdown tags selectors -->
-        <div class="tags__wrapper">
-          <div class="tags__dropdown">
-            <input
-              type="text"
-              class="tags__dropdown__search"
-              placeholder="Rechercher un ingrédient"
-            />
-            <ul class="tags__dropdown__list1"></ul>
-            <ul class="tags__dropdown__list2"></ul>
-            <ul class="tags__dropdown__list3"></ul>
-          </div>
-          <div class="tags__dropdown__arrow">
-            <img src="/src/assets/icons/down-arrow.svg" alt="" />
+
+        <!-- Search tags -->
+        <div class="searchtag">
+          <div class="searchtag__btn">
+            <p class="searchtag__btn__text">Coco</p>
+            <div class="searchtag__close"></div>
           </div>
         </div>
+
+        <!-- Dropdown tags selectors -->
+        <div class="tags__dropdown">
+          <div class="tags__dropdown__wrapper">
+            <input
+              type="text"
+              class="tags__dropdown__input-1"
+              placeholder="Ingrédients"
+            />
+            <div class="tags__dropdown__open"></div>
+            <div class="tags__dropdown__arrow-1"></div>
+          </div>
+          <div class="tags__dropdown__wrapper">
+            <input
+              type="text"
+              class="tags__dropdown__input-2"
+              placeholder="Appareils"
+            />
+            <div class="tags__dropdown__arrow-2"></div>
+          </div>
+          <div class="tags__dropdown__wrapper">
+            <input
+              type="text"
+              class="tags__dropdown__input-3"
+              placeholder="Ustensiles"
+            />
+            <div class="tags__dropdown__arrow-3"></div>
+          </div>
+        </div>
+
         <!-- Recipes Grid -->
         <section id="recipes">
           <div class="recipes__card">
@@ -72,11 +98,161 @@
               </div>
               <div class="recipes__card__content__steps">
                 <ul class="recipes__card__content__steps__list">
-                  <li>test</li>
-                  <li>test</li>
-                  <li>test</li>
-                  <li>test</li>
-                  <li>test</li>
+                  <li><span></span>test</li>
+                  <li><span></span>test</li>
+                  <li><span></span>test</li>
+                  <li><span></span>test</li>
+                  <li><span></span>test</li>
+                </ul>
+                <div class="recipes__card__content__steps__desc">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Nemo unde ad recusandae quis dolores sed iusto harum a omnis
+                    voluptas!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="recipes__card">
+            <div class="recipes__card__head"></div>
+            <div class="recipes__card__content">
+              <div class="recipes__card__content__title">
+                <h2>Limonade de Coco</h2>
+                <div class="recipes__card__content__title__time">
+                  <img src="/src/assets/icons/clock.svg" alt="" />
+                  <p class="recipes__card__content__title__time__info">
+                    10 min
+                  </p>
+                </div>
+              </div>
+              <div class="recipes__card__content__steps">
+                <ul class="recipes__card__content__steps__list">
+                  <li><span></span><span></span>test</li>
+                  <li><span></span><span></span>test</li>
+                  <li><span></span><span></span>test</li>
+                  <li><span></span><span></span>test</li>
+                  <li><span></span><span></span>test</li>
+                </ul>
+                <div class="recipes__card__content__steps__desc">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Nemo unde ad recusandae quis dolores sed iusto harum a omnis
+                    voluptas!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="recipes__card">
+            <div class="recipes__card__head"></div>
+            <div class="recipes__card__content">
+              <div class="recipes__card__content__title">
+                <h2>Limonade de Coco</h2>
+                <div class="recipes__card__content__title__time">
+                  <img src="/src/assets/icons/clock.svg" alt="" />
+                  <p class="recipes__card__content__title__time__info">
+                    10 min
+                  </p>
+                </div>
+              </div>
+              <div class="recipes__card__content__steps">
+                <ul class="recipes__card__content__steps__list">
+                  <li><span></span><span></span><span></span>test</li>
+                  <li><span></span><span></span><span></span>test</li>
+                  <li><span></span><span></span><span></span>test</li>
+                  <li><span></span><span></span><span></span>test</li>
+                  <li><span></span><span></span><span></span>test</li>
+                </ul>
+                <div class="recipes__card__content__steps__desc">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Nemo unde ad recusandae quis dolores sed iusto harum a omnis
+                    voluptas!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="recipes__card">
+            <div class="recipes__card__head"></div>
+            <div class="recipes__card__content">
+              <div class="recipes__card__content__title">
+                <h2>Limonade de Coco</h2>
+                <div class="recipes__card__content__title__time">
+                  <img src="/src/assets/icons/clock.svg" alt="" />
+                  <p class="recipes__card__content__title__time__info">
+                    10 min
+                  </p>
+                </div>
+              </div>
+              <div class="recipes__card__content__steps">
+                <ul class="recipes__card__content__steps__list">
+                  <li><span></span>test</li>
+                  <li><span></span>test</li>
+                  <li><span></span>test</li>
+                  <li><span></span>test</li>
+                  <li><span></span>test</li>
+                </ul>
+                <div class="recipes__card__content__steps__desc">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Nemo unde ad recusandae quis dolores sed iusto harum a omnis
+                    voluptas!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="recipes__card">
+            <div class="recipes__card__head"></div>
+            <div class="recipes__card__content">
+              <div class="recipes__card__content__title">
+                <h2>Limonade de Coco</h2>
+                <div class="recipes__card__content__title__time">
+                  <img src="/src/assets/icons/clock.svg" alt="" />
+                  <p class="recipes__card__content__title__time__info">
+                    10 min
+                  </p>
+                </div>
+              </div>
+              <div class="recipes__card__content__steps">
+                <ul class="recipes__card__content__steps__list">
+                  <li><span></span>test</li>
+                  <li><span></span>test</li>
+                  <li><span></span>test</li>
+                  <li><span></span>test</li>
+                  <li><span></span>test</li>
+                </ul>
+                <div class="recipes__card__content__steps__desc">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Nemo unde ad recusandae quis dolores sed iusto harum a omnis
+                    voluptas!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="recipes__card">
+            <div class="recipes__card__head"></div>
+            <div class="recipes__card__content">
+              <div class="recipes__card__content__title">
+                <h2>Limonade de Coco</h2>
+                <div class="recipes__card__content__title__time">
+                  <img src="/src/assets/icons/clock.svg" alt="" />
+                  <p class="recipes__card__content__title__time__info">
+                    10 min
+                  </p>
+                </div>
+              </div>
+              <div class="recipes__card__content__steps">
+                <ul class="recipes__card__content__steps__list">
+                  <li><span></span>test</li>
+                  <li><span></span>test</li>
+                  <li><span></span>test</li>
+                  <li><span></span>test</li>
+                  <li><span></span>test</li>
                 </ul>
                 <div class="recipes__card__content__steps__desc">
                   <p>

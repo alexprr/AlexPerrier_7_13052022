@@ -1,0 +1,12 @@
+body {
+    font-family: "Lato", sans-serif;
+    box-sizing: border-box;
+}
+
+.main {
+    &__wrapper {
+        max-width: 1240px;
+        margin: auto;
+        padding: 1rem 0;
+    }
+}

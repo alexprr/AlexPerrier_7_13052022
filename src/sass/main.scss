@@ -1,5 +1,7 @@
 @import "./utils/variables";
 @import "./utils/mixins";
-@import "./pages/home";
-@import "./components/tags";
+@import "./components/select-btn";
 @import "./components/recipe-card";
+@import "./pages/home";
+@import "./layouts/header";
+@import "./layouts/searchbar";

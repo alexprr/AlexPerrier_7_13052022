@@ -1,0 +1,23 @@
+.searchbar {
+    width: 100%;
+    position: relative;
+    &__input {
+        @include input;
+        width: 100%;
+        background-color: $light-grey;
+    }
+    &__input::placeholder {
+        color: #000;
+        opacity: .3;
+    }
+    &__icon__wrapper {
+        position: absolute;
+        top: 25%;
+        right: 10px;
+    }
+    &__icon__btn {
+        border: transparent;
+        background: transparent;
+        cursor: pointer;
+    }
+}

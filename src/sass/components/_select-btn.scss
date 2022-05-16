@@ -1,0 +1,80 @@
+.tags__dropdown {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    input {
+        padding: 1.6rem;
+        width: 170px;
+        height: auto;
+        border: none;
+        border-radius: 5px;
+        font-size: $m;
+        color: #fff;
+        font-weight: 700;
+    }
+    input::placeholder {
+        color: inherit;
+        font-weight: inherit;
+    }
+    &__input-1 {
+        background: $ingredients;
+    }
+    &__input-2 {
+        background: $appliances;
+    }
+    &__input-3 {
+        background: $utensils;
+    }
+    &__wrapper {
+        position: relative;
+        div {
+            position: absolute;
+            top: 50%;
+            right: 5%;
+            background: url("/src/assets/icons/down-arrow.svg") center center / 100% 100%;
+            width: 16px;
+            height: 10px;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+    }
+}
+
+.searchtag {
+    margin: 2rem 0;
+    &__btn {
+        display: flex;
+        align-items: center;
+        position: relative;
+        max-width: 107px;
+        height: 37px;
+        border-radius: 5px;
+        background: $ingredients;
+        &__text {
+            position: absolute;
+            right: 50%;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+        }
+    } 
+    &__close {
+        background: url("/src/assets/icons/close.svg") center center / 100% 100%;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 50%;
+        right: 8%;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 767px) {
+    .tags__dropdown {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+
