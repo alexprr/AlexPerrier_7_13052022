@@ -6,3 +6,19 @@
     font-size: $m;
     padding: 1rem 1.4rem;
 }
+
+@mixin listItems {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 70px;
+    padding: 0 .6rem;
+    border-radius: 0 0 5px 5px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    z-index: 1;
+}
