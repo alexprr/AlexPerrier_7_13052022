@@ -1,6 +1,6 @@
 import { recipes } from "../data/recipes.js";
 import { RecipeCard } from "./constructor/RecipeCard.js";
-import { capitalizeString } from "./utils/capitalize.js";
+import { capitalizeString, normalizer } from "./utils/utils.js";
 
 // Générer les cartes de recettes
 const createRecipesCard = (recipes) => {
@@ -139,19 +139,22 @@ let listAppliances = "";
 let listUstensils = "";
 
 filteredIngredients.forEach((ingredients) => {
-  listIngredients += `<li class="list-item" data-info="ingredient-${ingredients}" data-category="ingredient" data-name="${ingredients}">${capitalizeString(
+  let listItemID = normalizer(`${ingredients}`);
+  listIngredients += `<li id="ingredient-${listItemID}" class="list-item" data-info="ingredient-${ingredients}" data-category="ingredient" data-name="${ingredients}">${capitalizeString(
     ingredients
   )}</li>`;
 });
 
 filteredAppliances.forEach((appliances) => {
-  listAppliances += `<li class="list-item" data-category="appliance" data-name="${appliances}">${capitalizeString(
+  let listItemID = normalizer(`${appliances}`);
+  listAppliances += `<li id="appliance-${listItemID}" class="list-item" data-category="appliance" data-name="${appliances}">${capitalizeString(
     appliances
   )}</li>`;
 });
 
 filteredUstensils.forEach((ustensils) => {
-  listUstensils += `<li class="list-item" data-category="ustensils" data-name="${ustensils}">${capitalizeString(
+  let listItemID = normalizer(`${ustensils}`);
+  listUstensils += `<li id="ustensil-${listItemID}" class="list-item" data-category="ustensils" data-name="${ustensils}">${capitalizeString(
     ustensils
   )}</li>`;
 });
