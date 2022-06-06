@@ -17,10 +17,17 @@ ul {
     }
 }
 
+// Utilitaries classes
+
 .hide {
     display: none;
 }
 
 .show {
-    display: block;
+    display: flex;
 }
+
+.resizing {
+    width: 1000px;
+}
+

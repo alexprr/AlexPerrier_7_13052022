@@ -2,17 +2,6 @@
     display: flex;
     gap: 2rem;
     margin-top: 2rem;
-    &__wrapper {
-        ul {
-            @include listItems;
-            a {
-                text-decoration: none;
-                color: inherit;
-                width: 30%;
-                padding: 1rem .6rem;
-            }
-        }
-    }
     &__ingredients,
     &__appliances,
     &__ustensils {
@@ -40,10 +29,15 @@
         &__input {
             background: $ingredients;
         }
-        &__menu {
-            width: 700px;
+        &__list {
+            @include listItems;
             background: $ingredients;
-            display: none;
+            li {
+                text-decoration: none;
+                color: inherit;
+                width: 30%;
+                padding: 1rem .6rem;
+            }
         }
         &__arrow {
                 position: absolute;
@@ -51,16 +45,29 @@
                 right: 1rem;
                 transform: translate(-50%, -50%);
                 z-index: 100;
+                cursor: pointer;
             }
+        &__arrow.spinning {
+                animation: 200ms ease both spinning;
+                top: 40%;
+            }
+        // &__arrow.reverse-spin {
+        //     animation: 200ms ease both reverse-spin;
+        // }
         }
     &__appliances {
         &__input {
             background: $appliances;
         }
-        &__menu {
-            width: 700px;
-            background: $ingredients;
-            display: none;
+        &__list {
+            @include listItems;
+            background: $appliances;
+            li {
+                text-decoration: none;
+                color: inherit;
+                width: 30%;
+                padding: 1rem .6rem;
+            }
         }
         &__arrow {
             position: absolute;
@@ -68,16 +75,29 @@
             right: 1rem;
             transform: translate(-50%, -50%);
             z-index: 100;
+            cursor: pointer;
         }
+        &__arrow.spinning {
+            animation: 200ms ease both spinning;
+            top: 40%;
+        }
+        // &__arrow.reverse-spin {
+        //     animation: 200ms ease both reverse-spin;
+        // }
     }
     &__ustensils {
         &__input {
             background: $utensils;
         }
-        &__menu {
-            width: 700px;
-            background: $ingredients;
-            display: none;
+        &__list {
+            @include listItems;
+            background: $utensils;
+            li {
+                text-decoration: none;
+                color: inherit;
+                width: 30%;
+                padding: 1rem .6rem;
+            }
         }
         &__arrow {
             position: absolute;
@@ -85,37 +105,51 @@
             right: 1rem;
             transform: translate(-50%, -50%);
             z-index: 100;
+            cursor: pointer;
         }
+        &__arrow.spinning {
+            animation: 200ms ease both spinning;
+            top: 40%;
+        }
+        // &__arrow.reverse-spin {
+        //     animation: 200ms ease both reverse-spin;
+        //     top: 40%;
+        // }
     }
 }
 // Search tags
 
 .searchtag {
     margin: 2rem 0;
-    &__btn.active {
+    display: flex;
+    &__btn {
         display: flex;
         align-items: center;
-        position: relative;
-        width: 107px;
-        height: 37px;
+        gap: .6rem;
+        width: auto;
+        height: 40px;
+        margin: 0 .4rem;
+        padding: 0 .4rem;
         border-radius: 5px;
-        background: $ingredients;
         &__text {
-            position: absolute;
-            right: 50%;
             color: #fff;
             font-size: 12px;
             font-weight: 700;
+            padding: 0 0 0 .2rem;
         }
-    } 
-    &__close.active {
-        background: url("/src/assets/icons/close.svg") center center / 100% 100%;
+    }
+    &__btn.ingredient {
+        background: $ingredients;
+    }
+    &__btn.appliance {
+        background: $appliances;
+    }
+    &__btn.ustensil {
+        background: $utensils;
+    }
+    &__close {
         width: 20px;
         height: 20px;
-        position: absolute;
-        top: 50%;
-        right: 8%;
-        transform: translate(-50%, -50%);
         cursor: pointer;
     }
 }
@@ -128,3 +162,24 @@
 }
 
 
+// animations
+
+@keyframes spinning {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+// @keyframes reverse-spin {
+//     from {
+//         transform: rotate(180deg);
+//     }
+
+//     to {
+//         transform: rotate(0deg);
+//     }
+// }

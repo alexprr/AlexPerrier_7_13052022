@@ -3,27 +3,6 @@
   gap: 2rem;
   margin-top: 2rem;
 }
-.tags__dropdown__wrapper ul {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  width: auto;
-  height: auto;
-  position: absolute;
-  top: 70px;
-  padding: 0 0.6rem;
-  border-radius: 0 0 5px 5px;
-  text-decoration: none;
-  color: #fff;
-  font-weight: 700;
-  z-index: 1;
-}
-.tags__dropdown__wrapper ul a {
-  text-decoration: none;
-  color: inherit;
-  width: 30%;
-  padding: 1rem 0.6rem;
-}
 .tags__dropdown__ingredients, .tags__dropdown__appliances, .tags__dropdown__ustensils {
   display: flex;
   width: 220px;
@@ -48,10 +27,27 @@
 .tags__dropdown__ingredients__input {
   background: #3282F7;
 }
-.tags__dropdown__ingredients__menu {
-  width: 700px;
+.tags__dropdown__ingredients__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 70px;
+  padding: 0 1rem;
+  border-radius: 0 0 5px 5px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+  z-index: 1;
   background: #3282F7;
-  display: none;
+}
+.tags__dropdown__ingredients__list li {
+  text-decoration: none;
+  color: inherit;
+  width: 30%;
+  padding: 1rem 0.6rem;
 }
 .tags__dropdown__ingredients__arrow {
   position: absolute;
@@ -59,14 +55,36 @@
   right: 1rem;
   transform: translate(-50%, -50%);
   z-index: 100;
+  cursor: pointer;
+}
+.tags__dropdown__ingredients__arrow.spinning {
+  animation: 200ms ease both spinning;
+  top: 40%;
 }
 .tags__dropdown__appliances__input {
   background: #68D9A4;
 }
-.tags__dropdown__appliances__menu {
-  width: 700px;
-  background: #3282F7;
-  display: none;
+.tags__dropdown__appliances__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 70px;
+  padding: 0 1rem;
+  border-radius: 0 0 5px 5px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+  z-index: 1;
+  background: #68D9A4;
+}
+.tags__dropdown__appliances__list li {
+  text-decoration: none;
+  color: inherit;
+  width: 30%;
+  padding: 1rem 0.6rem;
 }
 .tags__dropdown__appliances__arrow {
   position: absolute;
@@ -74,14 +92,36 @@
   right: 1rem;
   transform: translate(-50%, -50%);
   z-index: 100;
+  cursor: pointer;
+}
+.tags__dropdown__appliances__arrow.spinning {
+  animation: 200ms ease both spinning;
+  top: 40%;
 }
 .tags__dropdown__ustensils__input {
   background: #ED6454;
 }
-.tags__dropdown__ustensils__menu {
-  width: 700px;
-  background: #3282F7;
-  display: none;
+.tags__dropdown__ustensils__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 70px;
+  padding: 0 1rem;
+  border-radius: 0 0 5px 5px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+  z-index: 1;
+  background: #ED6454;
+}
+.tags__dropdown__ustensils__list li {
+  text-decoration: none;
+  color: inherit;
+  width: 30%;
+  padding: 1rem 0.6rem;
 }
 .tags__dropdown__ustensils__arrow {
   position: absolute;
@@ -89,35 +129,45 @@
   right: 1rem;
   transform: translate(-50%, -50%);
   z-index: 100;
+  cursor: pointer;
+}
+.tags__dropdown__ustensils__arrow.spinning {
+  animation: 200ms ease both spinning;
+  top: 40%;
 }
 
 .searchtag {
   margin: 2rem 0;
+  display: flex;
 }
-.searchtag__btn.active {
+.searchtag__btn {
   display: flex;
   align-items: center;
-  position: relative;
-  width: 107px;
-  height: 37px;
+  gap: 0.6rem;
+  width: auto;
+  height: 40px;
+  margin: 0 0.4rem;
+  padding: 0 0.4rem;
   border-radius: 5px;
-  background: #3282F7;
 }
-.searchtag__btn.active__text {
-  position: absolute;
-  right: 50%;
+.searchtag__btn__text {
   color: #fff;
   font-size: 12px;
   font-weight: 700;
+  padding: 0 0 0 0.2rem;
 }
-.searchtag__close.active {
-  background: url("/src/assets/icons/close.svg") center center/100% 100%;
+.searchtag__btn.ingredient {
+  background: #3282F7;
+}
+.searchtag__btn.appliance {
+  background: #68D9A4;
+}
+.searchtag__btn.ustensil {
+  background: #ED6454;
+}
+.searchtag__close {
   width: 20px;
   height: 20px;
-  position: absolute;
-  top: 50%;
-  right: 8%;
-  transform: translate(-50%, -50%);
   cursor: pointer;
 }
 
@@ -125,6 +175,14 @@
   .tags__dropdown {
     flex-wrap: wrap;
     justify-content: center;
+  }
+}
+@keyframes spinning {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
   }
 }
 #recipes {
@@ -241,7 +299,11 @@ ul {
 }
 
 .show {
-  display: block;
+  display: flex;
+}
+
+.resizing {
+  width: 1000px;
 }
 
 .header__wrapper {
