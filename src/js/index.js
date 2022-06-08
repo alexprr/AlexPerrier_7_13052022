@@ -37,9 +37,21 @@ let ingredientsMenu = document.createElement("ul");
 let appliancesMenu = document.createElement("ul");
 let ustensilsMenu = document.createElement("ul");
 
-ingredientsMenu.classList.add("tags__dropdown__ingredients__list", "hide");
-appliancesMenu.classList.add("tags__dropdown__appliances__list", "hide");
-ustensilsMenu.classList.add("tags__dropdown__ustensils__list", "hide");
+ingredientsMenu.classList.add(
+  "filter-ingredient",
+  "tags__dropdown__ingredients__list",
+  "hide"
+);
+appliancesMenu.classList.add(
+  "filter-appliance",
+  "tags__dropdown__appliances__list",
+  "hide"
+);
+ustensilsMenu.classList.add(
+  "filter-ustensil",
+  "tags__dropdown__ustensils__list",
+  "hide"
+);
 
 // Appending <ul>
 ingredientsList.appendChild(ingredientsMenu);
@@ -102,63 +114,123 @@ function manageUstensilsDropdown() {
   }
 }
 
-// Initialize all Arrays
-const allIngredients = [];
-const allAppliances = [];
-const allUstensils = [];
+// // Initialize all Arrays
+// const allIngredients = [];
+// const allAppliances = [];
+// const allUstensils = [];
 
-// Collect all elements
-recipes.map((recipe) =>
-  recipe.ingredients.map((ing) =>
-    allIngredients.push(ing.ingredient.toLowerCase())
-  )
-);
+// // Collect all elements
+// recipes.map((recipe) =>
+//   recipe.ingredients.map((ing) =>
+//     allIngredients.push(ing.ingredient.toLowerCase())
+//   )
+// );
 
-recipes.forEach((recipe) => allAppliances.push(recipe.appliance.toLowerCase()));
+// recipes.forEach((recipe) => allAppliances.push(recipe.appliance.toLowerCase()));
 
-recipes.map((recipe) =>
-  recipe.ustensils.map((ustensil) => allUstensils.push(ustensil.toLowerCase()))
-);
+// recipes.map((recipe) =>
+//   recipe.ustensils.map((ustensil) => allUstensils.push(ustensil.toLowerCase()))
+// );
 
-// Filtered Array with no duplicate (refactor into 1 function)
-const filteredIngredients = allIngredients.filter(
-  (el, pos) => allIngredients.indexOf(el) == pos
-);
+// // Filtered Array with no duplicate (refactor into 1 function)
+// const filteredIngredients = allIngredients.filter(
+//   (el, pos) => allIngredients.indexOf(el) == pos
+// );
 
-const filteredAppliances = allAppliances.filter(
-  (el, pos) => allAppliances.indexOf(el) == pos
-);
+// const filteredAppliances = allAppliances.filter(
+//   (el, pos) => allAppliances.indexOf(el) == pos
+// );
 
-const filteredUstensils = allUstensils.filter(
-  (el, pos) => allUstensils.indexOf(el) == pos
-);
+// const filteredUstensils = allUstensils.filter(
+//   (el, pos) => allUstensils.indexOf(el) == pos
+// );
 
-// Create clickable list items (ingredients) (refactor into 1 function)
-let listIngredients = "";
-let listAppliances = "";
-let listUstensils = "";
+// // Create clickable list items (ingredients) (refactor into 1 function)
+// let listIngredients = "";
+// let listAppliances = "";
+// let listUstensils = "";
 
-filteredIngredients.forEach((ingredients) => {
-  let listItemID = normalizer(`${ingredients}`);
-  listIngredients += `<li id="ingredient-${listItemID}" class="list-item" data-info="ingredient-${ingredients}" data-category="ingredient" data-name="${ingredients}">${capitalizeString(
-    ingredients
-  )}</li>`;
-});
+// filteredIngredients.forEach((ingredients) => {
+//   let listItemID = normalizer(`${ingredients}`);
+//   listIngredients += `<li id="ingredient-${listItemID}" class="list-item" data-info="ingredient-${ingredients}" data-category="ingredient" data-name="${ingredients}">${capitalizeString(
+//     ingredients
+//   )}</li>`;
+// });
 
-filteredAppliances.forEach((appliances) => {
-  let listItemID = normalizer(`${appliances}`);
-  listAppliances += `<li id="appliance-${listItemID}" class="list-item" data-category="appliance" data-name="${appliances}">${capitalizeString(
-    appliances
-  )}</li>`;
-});
+// filteredAppliances.forEach((appliances) => {
+//   let listItemID = normalizer(`${appliances}`);
+//   listAppliances += `<li id="appliance-${listItemID}" class="list-item" data-category="appliance" data-name="${appliances}">${capitalizeString(
+//     appliances
+//   )}</li>`;
+// });
 
-filteredUstensils.forEach((ustensils) => {
-  let listItemID = normalizer(`${ustensils}`);
-  listUstensils += `<li id="ustensil-${listItemID}" class="list-item" data-category="ustensils" data-name="${ustensils}">${capitalizeString(
-    ustensils
-  )}</li>`;
-});
+// filteredUstensils.forEach((ustensils) => {
+//   let listItemID = normalizer(`${ustensils}`);
+//   listUstensils += `<li id="ustensil-${listItemID}" class="list-item" data-category="ustensils" data-name="${ustensils}">${capitalizeString(
+//     ustensils
+//   )}</li>`;
+// });
 
-ingredientsMenu.innerHTML = `${listIngredients}`;
-appliancesMenu.innerHTML = `${listAppliances}`;
-ustensilsMenu.innerHTML = `${listUstensils}`;
+// ingredientsMenu.innerHTML = `${listIngredients}`;
+// appliancesMenu.innerHTML = `${listAppliances}`;
+// ustensilsMenu.innerHTML = `${listUstensils}`;
+
+// Générer la liste des éléments dans les champs adéquats
+generateFiltersLists(recipes);
+
+function createFiltersLists(
+  recipesList,
+  ingredientsList,
+  appliancesList,
+  ustensilsList
+) {
+  ingredientsMenu.innerHTML = "";
+  filtersListFactory(ingredientsList, ingredientsMenu, "ingredient");
+  appliancesMenu.innerHTML = "";
+  filtersListFactory(appliancesList, appliancesMenu, "appliance");
+  ustensilsMenu.innerHTML = "";
+  filtersListFactory(ustensilsList, ustensilsMenu, "ustensil");
+}
+
+function filtersListFactory(list, container, type) {
+  list.forEach((item) => {
+    const createItem = document.createElement("li");
+    createItem.innerHTML = item;
+    createItem.setAttribute("data-type", type);
+    container.appendChild(createItem);
+  });
+}
+
+function generateFiltersLists(
+  recipesList,
+  ingredientsList,
+  appliancesList,
+  ustensilsList
+) {
+  let ingredients = [];
+  let appliances = [];
+  let ustensils = [];
+
+  recipesList.forEach((recipe) => {
+    recipe.ingredients.map((element) =>
+      ingredients.push(capitalizeString(element.ingredient))
+    );
+    appliances.push(capitalizeString(recipe.appliance));
+    recipe.ustensils.map((element) =>
+      ustensils.push(capitalizeString(element))
+    );
+  });
+
+  ingredientsList = [...new Set(ingredients)];
+  appliancesList = [...new Set(appliances)];
+  ustensilsList = [...new Set(ustensils)];
+
+  createFiltersLists(
+    recipesList,
+    ingredientsList,
+    appliancesList,
+    ustensilsList
+  );
+
+  return { ingredientsList, appliancesList, ustensilsList };
+}
