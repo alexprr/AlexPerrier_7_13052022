@@ -151,3 +151,23 @@ filteredUstensils.forEach((ustensils) => {
 ingredientsMenu.innerHTML = `${listIngredients}`;
 appliancesMenu.innerHTML = `${listAppliances}`;
 ustensilsMenu.innerHTML = `${listUstensils}`;
+
+// Dropdown menus filter
+function dropdownListFilter(target, menu) {
+  document.getElementById(target).addEventListener("input", () => {
+    let searchValue = document.getElementById(target).value;
+    let listItems = menu.querySelectorAll(".filter li");
+
+    listItems.forEach((items, index) => {
+      if (!items.innerText.toLowerCase().includes(searchValue)) {
+        listItems[index].classList.add("hide");
+      } else {
+        listItems[index].classList.remove("hide");
+      }
+    });
+  });
+}
+
+dropdownListFilter("ingredients", ingredientsMenu);
+dropdownListFilter("appliances", appliancesMenu);
+dropdownListFilter("ustensils", ustensilsMenu);
