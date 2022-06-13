@@ -1,6 +1,8 @@
 import { recipes } from "../data/recipes.js";
 import { RecipeCard } from "./constructor/RecipeCard.js";
 import { GenerateFilterLists } from "./constructor/GenerateFilterLists.js";
+import { CreateFilterLists } from "./constructor/CreateFilterLists.js";
+import { List } from "./constructor/CreateFilterLists.js";
 import { capitalizeString, normalizer } from "./utils/utils.js";
 
 // Générer les cartes de recettes
@@ -16,8 +18,32 @@ const createRecipesCard = (recipes) => {
 createRecipesCard(recipes);
 
 // Générer les listes de filtres
+function createDropdown(dropdown, type, list) {
+  let dropdownMenu = document.querySelector(dropdown);
+  let menu = document.createElement("ul");
+  menu.classList.add("filter", `filter-${type}`, `${list}`, "hide");
+  dropdownMenu.appendChild(menu);
+}
+
+createDropdown(
+  ".tags__dropdown__ingredients",
+  "ingredients",
+  "tags__dropdown__ingredients__list"
+);
+createDropdown(
+  ".tags__dropdown__appliances",
+  "appliances",
+  "tags__dropdown__appliances__list"
+);
+createDropdown(
+  ".tags__dropdown__ustensils",
+  "ustensils",
+  "tags__dropdown__ustensils__list"
+);
 
 // DOM Elements
+
+// Container
 const ingredientsList = document.querySelector(".tags__dropdown__ingredients");
 const appliancesList = document.querySelector(".tags__dropdown__appliances");
 const ustensilsList = document.querySelector(".tags__dropdown__ustensils");
@@ -33,10 +59,16 @@ const ustensilsArrow = document.querySelector(
   ".tags__dropdown__ustensils__arrow"
 );
 
-// Création des listes déroulantes
-let ingredientsMenu = document.createElement("ul");
-let appliancesMenu = document.createElement("ul");
-let ustensilsMenu = document.createElement("ul");
+// Menu
+const ingredientsMenu = document.querySelector(
+  ".tags__dropdown__ingredients__list"
+);
+const appliancesMenu = document.querySelector(
+  ".tags__dropdown__appliances__list"
+);
+const ustensilsMenu = document.querySelector(
+  ".tags__dropdown__ustensils__list"
+);
 
 // Ajout de classes css
 ingredientsMenu.classList.add(
@@ -58,99 +90,49 @@ ustensilsMenu.classList.add(
   "hide"
 );
 
-// Appending <ul>
-ingredientsList.appendChild(ingredientsMenu);
-appliancesList.appendChild(appliancesMenu);
-ustensilsList.appendChild(ustensilsMenu);
-
-// Sélectionner les éléments du DOM
-ingredientsMenu.querySelector(".tags__dropdown__ingredients__list");
-appliancesMenu.querySelector(".tags__dropdown__appliances__list");
-ustensilsMenu.querySelector(".tags__dropdown__ustensils__list");
-
 // Evenements clic sur une flèche de menu déroulant
-ingredientsArrow.addEventListener("click", manageIngredientsDropdown);
-appliancesArrow.addEventListener("click", manageAppliancesDropdown);
-ustensilsArrow.addEventListener("click", manageUstensilsDropdown);
-
-// Fonctions poiur ouvrir les menus déroulants
-function manageIngredientsDropdown() {
-  if (ingredientsArrow.classList.contains("spinning")) {
-    ingredientsArrow.classList.remove("spinning");
-    ingredientsMenu.classList.remove("show");
-    ingredientsMenu.classList.add("hide");
-    ingredientsList.classList.remove("resizing");
+function manageDropdown(arrow, menu, list) {
+  if (arrow.classList.contains("spinning")) {
+    arrow.classList.remove("spinning");
+    menu.classList.remove("show");
+    menu.classList.add("hide");
+    list.classList.remove("resizing");
   } else {
-    ingredientsArrow.classList.add("spinning");
-    ingredientsMenu.classList.remove("hide");
-    ingredientsMenu.classList.add("show");
-    ingredientsList.classList.add("resizing");
+    arrow.classList.add("spinning");
+    menu.classList.remove("hide");
+    menu.classList.add("show");
+    list.classList.add("resizing");
   }
 }
 
-function manageAppliancesDropdown() {
-  if (appliancesArrow.classList.contains("spinning")) {
-    appliancesArrow.classList.remove("spinning");
-    appliancesMenu.classList.remove("show");
-    appliancesMenu.classList.add("hide");
-    appliancesList.classList.remove("resizing");
-  } else {
-    appliancesArrow.classList.add("spinning");
-    appliancesMenu.classList.remove("hide");
-    appliancesMenu.classList.add("show");
-    appliancesList.classList.add("resizing");
-  }
+ingredientsArrow.addEventListener("click", () => {
+  manageDropdown(ingredientsArrow, ingredientsMenu, ingredientsList);
+});
+appliancesArrow.addEventListener("click", () => {
+  manageDropdown(appliancesArrow, appliancesMenu, appliancesList);
+});
+ustensilsArrow.addEventListener("click", () => {
+  manageDropdown(ustensilsArrow, ustensilsMenu, ustensilsList);
+});
+
+// Création et ajout d'item dans les listes
+function newFiltersList(recipes) {
+  // Renvoie les tableaux filtrés
+  const filtersLists = new GenerateFilterLists(recipes);
+  const filteredIngredients = filtersLists.getIngredients();
+  const filteredAppliances = filtersLists.getAppliances();
+  const filteredUstensils = filtersLists.getUstensils();
+
+  const ingredientsDOM = document.querySelector(".tags__dropdown__ingredients");
+  const appliancesDOM = document.querySelector(".tags__dropdown__appliances");
+  const ustensilsDOM = document.querySelector(".tags__dropdown__ustensils");
+
+  new List(ingredientsDOM, filteredIngredients, "ingredient");
+  new List(appliancesDOM, filteredAppliances, "appliance");
+  new List(ustensilsDOM, filteredUstensils, "ustensil");
 }
 
-function manageUstensilsDropdown() {
-  if (ustensilsArrow.classList.contains("spinning")) {
-    ustensilsArrow.classList.remove("spinning");
-    ustensilsMenu.classList.remove("show");
-    ustensilsMenu.classList.add("hide");
-    ustensilsList.classList.remove("resizing");
-  } else {
-    ustensilsArrow.classList.add("spinning");
-    ustensilsMenu.classList.remove("hide");
-    ustensilsMenu.classList.add("show");
-    ustensilsList.classList.add("resizing");
-  }
-}
-
-// Renvoie les tableaux filtrés
-const filtersLists = new GenerateFilterLists(recipes);
-const filteredIngredients = filtersLists.getIngredients();
-const filteredAppliances = filtersLists.getAppliances();
-const filteredUstensils = filtersLists.getUstensils();
-
-// Create clickable list items (ingredients) (refactor into 1 function)
-let listIngredients = "";
-let listAppliances = "";
-let listUstensils = "";
-
-filteredIngredients.forEach((ingredients) => {
-  let listItemID = normalizer(`${ingredients}`);
-  listIngredients += `<li id="ingredient-${listItemID}" class="list-item" data-info="ingredient-${ingredients}" data-category="ingredient" data-name="${ingredients}">${capitalizeString(
-    ingredients
-  )}</li>`;
-});
-
-filteredAppliances.forEach((appliances) => {
-  let listItemID = normalizer(`${appliances}`);
-  listAppliances += `<li id="appliance-${listItemID}" class="list-item" data-category="appliance" data-name="${appliances}">${capitalizeString(
-    appliances
-  )}</li>`;
-});
-
-filteredUstensils.forEach((ustensils) => {
-  let listItemID = normalizer(`${ustensils}`);
-  listUstensils += `<li id="ustensil-${listItemID}" class="list-item" data-category="ustensils" data-name="${ustensils}">${capitalizeString(
-    ustensils
-  )}</li>`;
-});
-
-ingredientsMenu.innerHTML = `${listIngredients}`;
-appliancesMenu.innerHTML = `${listAppliances}`;
-ustensilsMenu.innerHTML = `${listUstensils}`;
+newFiltersList(recipes);
 
 // Dropdown menus filter
 function dropdownListFilter(target, menu) {

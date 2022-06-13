@@ -123,6 +123,16 @@
     margin: 2rem 0;
     display: flex;
     &__btn {
+        &__ingredient {
+            background: $ingredients;
+        }
+        &__appliance {
+            background: $appliances;
+        }
+        &__ustensil {
+            background: $utensils;
+        }
+
         display: flex;
         align-items: center;
         gap: .6rem;
@@ -137,15 +147,6 @@
             font-weight: 700;
             padding: 0 0 0 .2rem;
         }
-    }
-    &__btn.ingredient {
-        background: $ingredients;
-    }
-    &__btn.appliance {
-        background: $appliances;
-    }
-    &__btn.ustensil {
-        background: $utensils;
     }
     &__close {
         width: 20px;

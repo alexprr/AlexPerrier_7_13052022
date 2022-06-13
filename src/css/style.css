@@ -150,20 +150,20 @@
   padding: 0 0.4rem;
   border-radius: 5px;
 }
+.searchtag__btn__ingredient {
+  background: #3282F7;
+}
+.searchtag__btn__appliance {
+  background: #68D9A4;
+}
+.searchtag__btn__ustensil {
+  background: #ED6454;
+}
 .searchtag__btn__text {
   color: #fff;
   font-size: 12px;
   font-weight: 700;
   padding: 0 0 0 0.2rem;
-}
-.searchtag__btn.ingredient {
-  background: #3282F7;
-}
-.searchtag__btn.appliance {
-  background: #68D9A4;
-}
-.searchtag__btn.ustensil {
-  background: #ED6454;
 }
 .searchtag__close {
   width: 20px;
