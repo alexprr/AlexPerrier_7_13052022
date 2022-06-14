@@ -1,21 +1,9 @@
 import { recipes } from "../data/recipes.js";
 import { RecipeCard } from "./constructor/RecipeCard.js";
 import { GenerateFilterLists } from "./constructor/GenerateFilterLists.js";
-import { CreateFilterLists } from "./constructor/CreateFilterLists.js";
 import { List } from "./constructor/CreateFilterLists.js";
-import { capitalizeString, normalizer } from "./utils/utils.js";
-
-// Générer les cartes de recettes
-const createRecipesCard = (recipes) => {
-  const recipeSection = document.getElementById("recipes");
-
-  recipes.forEach((recipe) => {
-    recipeSection.innerHTML += "";
-    recipeSection.appendChild(new RecipeCard(recipe).buildRecipeCard());
-  });
-};
-
-createRecipesCard(recipes);
+// import { CreateFilterLists } from "./constructor/CreateFilterLists.js";
+// import { capitalizeString, normalizer } from "./utils/utils.js";
 
 // Générer les listes de filtres
 function createDropdown(dropdown, type, list) {
@@ -153,3 +141,42 @@ function dropdownListFilter(target, menu) {
 dropdownListFilter("ingredients", ingredientsMenu);
 dropdownListFilter("appliances", appliancesMenu);
 dropdownListFilter("ustensils", ustensilsMenu);
+
+// Générer les cartes de recettes
+const createRecipesCard = (recipes) => {
+  const recipeSection = document.getElementById("recipes");
+  recipeSection.innerHTML = "";
+  recipes.forEach((recipe) => {
+    const allRecipes = new RecipeCard(recipe);
+    recipeSection.appendChild(allRecipes.buildRecipeCard());
+  });
+};
+
+createRecipesCard(recipes);
+
+// Algo
+
+// Main search w/ Array methods
+
+//Search recipes by input (1st method)
+document.getElementById("searchbarInput").addEventListener("input", () => {
+  //initializations
+  let searchInput = document.getElementById("searchbarInput").value;
+  let cards = document.querySelectorAll(".recipes__card");
+
+  //loop through all elements (1st method)
+  cards.forEach((card, index) => {
+    //check if text includes the search value
+    if (searchInput.length > 2) {
+      if (card.innerText.toLowerCase().includes(searchInput)) {
+        //display matching card
+        cards[index].classList.remove("hide");
+      } else {
+        //hide others
+        cards[index].classList.add("hide");
+      }
+    } else {
+      cards[index].classList.remove("hide");
+    }
+  });
+});
