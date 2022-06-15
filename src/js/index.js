@@ -153,30 +153,3 @@ const createRecipesCard = (recipes) => {
 };
 
 createRecipesCard(recipes);
-
-// Algo
-
-// Main search w/ Array methods
-
-//Search recipes by input (1st method)
-document.getElementById("searchbarInput").addEventListener("input", () => {
-  //initializations
-  let searchInput = document.getElementById("searchbarInput").value;
-  let cards = document.querySelectorAll(".recipes__card");
-
-  //loop through all elements (1st method)
-  cards.forEach((card, index) => {
-    //check if text includes the search value
-    if (searchInput.length > 2) {
-      if (card.innerText.toLowerCase().includes(searchInput)) {
-        //display matching card
-        cards[index].classList.remove("hide");
-      } else {
-        //hide others
-        cards[index].classList.add("hide");
-      }
-    } else {
-      cards[index].classList.remove("hide");
-    }
-  });
-});
