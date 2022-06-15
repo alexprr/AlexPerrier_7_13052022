@@ -39,3 +39,25 @@ export class DescriptionSearch extends SearchCriteria {
     return element.description.toLowerCase().includes(query);
   }
 }
+
+export class AppliancesSearch extends SearchCriteria {
+  constructor(recipes) {
+    super(recipes);
+  }
+
+  filterRecipes(element, query) {
+    return element.appliance.toLowerCase().includes(query);
+  }
+}
+
+export class UtensilsSearch extends SearchCriteria {
+  constructor(recipes) {
+    super(recipes);
+  }
+
+  filterRecipes(element, query) {
+    return element.ustensils.some((element) => {
+      return element.toLowerCase().includes(query);
+    });
+  }
+}

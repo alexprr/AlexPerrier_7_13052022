@@ -10,7 +10,7 @@ export class Tag {
 
   addTag() {
     let tag = new CreateTag(this.filter, this.color, this.type);
-    tag = tag.createTag();
+    tag = tag.createTag(this.type);
     const tagSection = document.querySelector(".searchtag");
     tagSection.appendChild(tag);
     tag.addEventListener("click", this.removeTag);
