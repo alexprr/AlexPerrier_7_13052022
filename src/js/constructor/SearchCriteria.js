@@ -3,8 +3,8 @@ export class SearchCriteria {
     this.recipes = recipes;
   }
 
-  search(query) {
-    return this.filterRecipes(query);
+  search(element, query) {
+    return this.filterRecipes(element, query);
   }
 }
 
@@ -13,10 +13,8 @@ export class NameSearch extends SearchCriteria {
     super(recipes);
   }
 
-  filterRecipes(query) {
-    return this.recipes.filter((recipes) =>
-      recipes.name.toLowerCase().includes(query)
-    );
+  filterRecipes(element, query) {
+    return element.name.toLowerCase().includes(query);
   }
 }
 
@@ -25,9 +23,9 @@ export class IngredientSearch extends SearchCriteria {
     super(recipes);
   }
 
-  filterRecipes(query) {
-    return this.recipes.ingredients.some((recipes) => {
-      return recipes.ingredient.toLowerCase().includes(query);
+  filterRecipes(element, query) {
+    return element.ingredients.some((element) => {
+      return element.ingredient.toLowerCase().includes(query);
     });
   }
 }
@@ -37,7 +35,7 @@ export class DescriptionSearch extends SearchCriteria {
     super(recipes);
   }
 
-  filterRecipes(query) {
-    return this.recipes.description.toLowerCase().includes(query);
+  filterRecipes(element, query) {
+    return element.description.toLowerCase().includes(query);
   }
 }

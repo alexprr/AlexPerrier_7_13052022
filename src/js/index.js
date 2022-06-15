@@ -2,8 +2,7 @@ import { recipes } from "../data/recipes.js";
 import { RecipeCard } from "./constructor/RecipeCard.js";
 import { GenerateFilterLists } from "./constructor/GenerateFilterLists.js";
 import { List } from "./constructor/CreateFilterLists.js";
-// import { CreateFilterLists } from "./constructor/CreateFilterLists.js";
-// import { capitalizeString, normalizer } from "./utils/utils.js";
+import { SearchAlgo } from "./constructor/SearchAlgo.js";
 
 // Générer les listes de filtres
 function createDropdown(dropdown, type, list) {
@@ -153,3 +152,7 @@ const createRecipesCard = (recipes) => {
 };
 
 createRecipesCard(recipes);
+
+// Main Algo
+const Search = new SearchAlgo(recipes);
+Search.onSearch();
