@@ -4,15 +4,16 @@ import { GenerateFilterLists } from "./constructor/GenerateFilterLists.js";
 import { CreateFilterLists } from "./constructor/CreateFilterLists.js";
 import { List } from "./constructor/CreateFilterLists.js";
 import { capitalizeString, normalizer } from "./utils/utils.js";
+import { SearchAlgo } from "./constructor/SearchAlgo.js";
 
 // Générer les cartes de recettes
 const createRecipesCard = (recipes) => {
   const recipeSection = document.getElementById("recipes");
 
-  recipes.forEach((recipe) => {
+  for (let recipe of recipes) {
     recipeSection.innerHTML += "";
     recipeSection.appendChild(new RecipeCard(recipe).buildRecipeCard());
-  });
+  }
 };
 
 createRecipesCard(recipes);
@@ -138,18 +139,23 @@ newFiltersList(recipes);
 function dropdownListFilter(target, menu) {
   document.getElementById(target).addEventListener("input", () => {
     let searchValue = document.getElementById(target).value;
-    let listItems = menu.querySelectorAll(".filter li");
+    let listItems = Array.from(menu.querySelectorAll(".filter li"));
 
-    listItems.forEach((items, index) => {
+    for (let items of listItems) {
       if (!items.innerText.toLowerCase().includes(searchValue)) {
-        listItems[index].classList.add("hide");
+        items.classList.add("hide");
       } else {
-        listItems[index].classList.remove("hide");
+        items.classList.remove("hide");
       }
-    });
+    }
   });
 }
 
 dropdownListFilter("ingredients", ingredientsMenu);
 dropdownListFilter("appliances", appliancesMenu);
 dropdownListFilter("ustensils", ustensilsMenu);
+
+// Main Algo
+
+const Search = new SearchAlgo(recipes);
+Search.onSearch();
