@@ -1,5 +1,6 @@
 import { recipes } from "../../data/recipes.js";
 import { Tag } from "./Tag.js";
+import { TagAlgo } from "../index.js";
 
 export class CreateFilterLists {
   constructor(filters, filterDOM, color) {
@@ -86,9 +87,11 @@ export class List {
       const li = document.createElement("li");
       li.innerText = element;
       li.setAttribute("data-value", `${element}`);
+      li.style.cursor = "pointer";
       listContainer.appendChild(li);
       li.addEventListener("click", () => {
         new Tag(li.innerText, this.color, this.filterDOM.id);
+        TagAlgo();
       });
     });
   }
