@@ -35,8 +35,8 @@
             li {
                 text-decoration: none;
                 color: inherit;
-                width: 30%;
-                padding: 1rem .6rem;
+                width: 28%;
+                padding: 1.4rem .6rem 1.4rem 1.4rem
             }
         }
         &__arrow {
@@ -51,9 +51,6 @@
                 animation: 200ms ease both spinning;
                 top: 40%;
             }
-        // &__arrow.reverse-spin {
-        //     animation: 200ms ease both reverse-spin;
-        // }
         }
     &__appliances {
         &__input {
@@ -81,9 +78,6 @@
             animation: 200ms ease both spinning;
             top: 40%;
         }
-        // &__arrow.reverse-spin {
-        //     animation: 200ms ease both reverse-spin;
-        // }
     }
     &__ustensils {
         &__input {
@@ -111,10 +105,6 @@
             animation: 200ms ease both spinning;
             top: 40%;
         }
-        // &__arrow.reverse-spin {
-        //     animation: 200ms ease both reverse-spin;
-        //     top: 40%;
-        // }
     }
 }
 // Search tags
@@ -174,13 +164,3 @@
         transform: rotate(180deg);
     }
 }
-
-// @keyframes reverse-spin {
-//     from {
-//         transform: rotate(180deg);
-//     }
-
-//     to {
-//         transform: rotate(0deg);
-//     }
-// }

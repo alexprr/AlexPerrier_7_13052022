@@ -31,11 +31,10 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  width: auto;
+  width: 100%;
   height: auto;
   position: absolute;
-  top: 70px;
-  padding: 0 1rem;
+  top: 68px;
   border-radius: 0 0 5px 5px;
   text-decoration: none;
   color: #fff;
@@ -46,8 +45,8 @@
 .tags__dropdown__ingredients__list li {
   text-decoration: none;
   color: inherit;
-  width: 30%;
-  padding: 1rem 0.6rem;
+  width: 28%;
+  padding: 1.4rem 0.6rem 1.4rem 1.4rem;
 }
 .tags__dropdown__ingredients__arrow {
   position: absolute;
@@ -68,11 +67,10 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  width: auto;
+  width: 100%;
   height: auto;
   position: absolute;
-  top: 70px;
-  padding: 0 1rem;
+  top: 68px;
   border-radius: 0 0 5px 5px;
   text-decoration: none;
   color: #fff;
@@ -105,11 +103,10 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  width: auto;
+  width: 100%;
   height: auto;
   position: absolute;
-  top: 70px;
-  padding: 0 1rem;
+  top: 68px;
   border-radius: 0 0 5px 5px;
   text-decoration: none;
   color: #fff;
