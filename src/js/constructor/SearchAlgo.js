@@ -28,7 +28,7 @@ export class SearchAlgo {
     if (findInName || findInIngredients || findInDescription == true) {
       return true;
     } else {
-      false;
+      return false;
     }
   }
 
