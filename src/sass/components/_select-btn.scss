@@ -23,6 +23,7 @@
         input::placeholder {
             color: inherit;
             font-weight: inherit;
+            opacity: .8;
         }
     }
     &__ingredients {
@@ -62,8 +63,8 @@
             li {
                 text-decoration: none;
                 color: inherit;
-                width: 30%;
-                padding: 1rem .6rem;
+                width: 28%;
+                padding: 1.4rem .6rem 1.4rem 1.4rem
             }
         }
         &__arrow {
@@ -89,8 +90,8 @@
             li {
                 text-decoration: none;
                 color: inherit;
-                width: 30%;
-                padding: 1rem .6rem;
+                width: 28%;
+                padding: 1.4rem .6rem 1.4rem 1.4rem
             }
         }
         &__arrow {

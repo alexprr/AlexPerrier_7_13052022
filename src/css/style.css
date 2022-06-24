@@ -23,6 +23,7 @@
 .tags__dropdown__ingredients input::placeholder, .tags__dropdown__appliances input::placeholder, .tags__dropdown__ustensils input::placeholder {
   color: inherit;
   font-weight: inherit;
+  opacity: 0.8;
 }
 .tags__dropdown__ingredients__input {
   background: #3282F7;
@@ -81,8 +82,8 @@
 .tags__dropdown__appliances__list li {
   text-decoration: none;
   color: inherit;
-  width: 30%;
-  padding: 1rem 0.6rem;
+  width: 28%;
+  padding: 1.4rem 0.6rem 1.4rem 1.4rem;
 }
 .tags__dropdown__appliances__arrow {
   position: absolute;
@@ -117,8 +118,8 @@
 .tags__dropdown__ustensils__list li {
   text-decoration: none;
   color: inherit;
-  width: 30%;
-  padding: 1rem 0.6rem;
+  width: 28%;
+  padding: 1.4rem 0.6rem 1.4rem 1.4rem;
 }
 .tags__dropdown__ustensils__arrow {
   position: absolute;

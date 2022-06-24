@@ -8,51 +8,10 @@ export class CreateFilterLists {
     this.filterDOM = filterDOM;
     this.color = color;
     this.createFiltersList(this.filters);
-    this.filterEvent();
   }
 
   createFiltersList(filters) {
     new List(this.filterDOM, filters, this.color);
-  }
-
-  filterEvent() {
-    let open = false;
-    const input = this.DOMfilter.querySelector("input");
-    const filter = this.DOMfilter;
-    let othersFilters = Array.from(
-      document.querySelectorAll(".tags__dropdown__wrapper")
-    );
-    othersFilters = othersFilters.filter((elem) => {
-      return elem !== filter;
-    });
-    const dropDownIcon = this.DOMfilter.querySelector("img");
-
-    this.DOMfilter.addEventListener("click", (e) => {
-      e.stopPropagation();
-      othersFilters.forEach((element) => {
-        element.style.pointerEvents = "none";
-      });
-      // Open sort list
-      if (open == false) {
-        filter.querySelector("ul").classList.remove("hide");
-
-        open = true;
-        document.addEventListener("click", function toggle(e) {
-          if (!filter.contains(e.target)) {
-            remove();
-          }
-          this.removeEventListener("click", toggle);
-        });
-      }
-      // Close sort list
-      else if (open == true && dropDownIcon.contains(e.target)) {
-        remove();
-      }
-    });
-    function remove() {
-      filter.querySelector("ul").classList.add("hide");
-      open = false;
-    }
   }
 }
 
