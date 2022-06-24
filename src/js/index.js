@@ -177,6 +177,7 @@ export function TagAlgo() {
     newFiltersList(filteredRecipes);
   } else {
     Search.createRecipesCard(recipes);
+    newFiltersList(recipes);
   }
 }
 
