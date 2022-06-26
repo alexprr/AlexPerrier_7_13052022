@@ -1,4 +1,5 @@
 import { CreateTag } from "./CreateTag.js";
+import { TagAlgo } from "../index.js";
 
 export class Tag {
   constructor(filter, color, type) {
@@ -19,5 +20,6 @@ export class Tag {
   removeTag(e) {
     let element = e.target;
     element.parentNode.remove(element);
+    TagAlgo();
   }
 }

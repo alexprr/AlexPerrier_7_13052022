@@ -7,6 +7,7 @@ import {
 import { RecipeCard } from "./RecipeCard.js";
 import { GenerateFilterLists } from "./GenerateFilterLists.js";
 import { List } from "./CreateFilterLists.js";
+import { TagAlgo } from "../index.js";
 
 export class SearchAlgo {
   constructor(recipes) {
@@ -62,6 +63,7 @@ export class SearchAlgo {
   }
 
   onSearch(recipes) {
+    let TagsArray = Array.from(document.querySelectorAll(".searchtag__btn"));
     recipes = this.searchedRecipes;
     this.$input.addEventListener("input", (e) => {
       const query = e.target.value;
@@ -82,7 +84,7 @@ export class SearchAlgo {
           this.$recipesSection.innerHTML = `<div class="no-result">Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc...</div>`;
         }
         this.recipes = this.searchedRecipes;
-      } else if (query.length < 3) {
+      } else if (query.length < 3 && TagsArray.length === 0) {
         this.recipes = recipes;
         this.searchedRecipes = this.recipes;
         this.createRecipesCard(this.recipes);
