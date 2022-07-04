@@ -189,6 +189,11 @@
   gap: 3rem;
 }
 
+#recipes.auto {
+  display: block;
+  font-size: 1.4rem;
+}
+
 .recipes__card {
   max-width: 380px;
   height: 364px;

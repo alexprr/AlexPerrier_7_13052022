@@ -1,4 +1,3 @@
-import { recipes } from "../../data/recipes.js";
 import { Tag } from "./Tag.js";
 import { TagAlgo } from "../index.js";
 

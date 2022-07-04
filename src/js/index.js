@@ -152,6 +152,7 @@ dropdownListFilter("ustensils", ustensilsMenu);
 export const createRecipesCard = (recipes) => {
   const recipeSection = document.getElementById("recipes");
   recipeSection.innerHTML = "";
+
   for (let recipe of recipes) {
     recipeSection.appendChild(new RecipeCard(recipe).buildRecipeCard());
   }
@@ -175,7 +176,7 @@ export function TagAlgo() {
     createRecipesCard(filteredRecipes);
     newFiltersList(filteredRecipes);
   } else {
-    Search.createRecipesCard(recipes);
+    createRecipesCard(recipes);
     newFiltersList(recipes);
   }
 }
