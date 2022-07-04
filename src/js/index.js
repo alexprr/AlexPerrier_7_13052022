@@ -176,7 +176,7 @@ export function TagAlgo() {
     createRecipesCard(filteredRecipes);
     newFiltersList(filteredRecipes);
   } else {
-    Search.createRecipesCard(recipes);
+    createRecipesCard(recipes);
     newFiltersList(recipes);
   }
 }
@@ -186,7 +186,7 @@ export function TagMatch(tag) {
   tag = tag.innerText.toLowerCase();
   switch (type) {
     case "ingredient":
-      filteredRecipes = filteredRecipes.filter((recipe) => {
+      filteredRecipes = recipes.filter((recipe) => {
         const ingredientFilter = new IngredientSearch(filteredRecipes);
         const match = ingredientFilter.search(recipe, tag);
         if (match == true) {
@@ -195,7 +195,7 @@ export function TagMatch(tag) {
       });
       break;
     case "appliance":
-      filteredRecipes = filteredRecipes.filter((recipe) => {
+      filteredRecipes = recipes.filter((recipe) => {
         const appliancesFilter = new AppliancesSearch(filteredRecipes);
         const match = appliancesFilter.search(recipe, tag);
         if (match == true) {
@@ -204,7 +204,7 @@ export function TagMatch(tag) {
       });
       break;
     case "ustensil":
-      filteredRecipes = filteredRecipes.filter((recipe) => {
+      filteredRecipes = recipes.filter((recipe) => {
         const ustensilsFilter = new UtensilsSearch(filteredRecipes);
         const match = ustensilsFilter.search(recipe, tag);
         if (match == true) {
