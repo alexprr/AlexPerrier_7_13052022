@@ -11,7 +11,7 @@ import {
 export class TagAlgo {
   constructor() {
     this.recipes = recipes;
-    this.filteredRecipes = [...recipes];
+    this.filteredRecipes;
   }
 
   tagMatch(tag) {
@@ -19,7 +19,7 @@ export class TagAlgo {
     tag = tag.innerText.toLowerCase();
     switch (type) {
       case "ingredient":
-        this.filteredRecipes = this.filteredRecipes.filter((recipe) => {
+        this.filteredRecipes = this.recipes.filter((recipe) => {
           const ingredientFilter = new IngredientSearch(this.filteredRecipes);
           const match = ingredientFilter.search(recipe, tag);
           if (match == true) {
@@ -28,7 +28,7 @@ export class TagAlgo {
         });
         break;
       case "appliance":
-        this.filteredRecipes = this.filteredRecipes.filter((recipe) => {
+        this.filteredRecipes = this.recipes.filter((recipe) => {
           const appliancesFilter = new AppliancesSearch(this.filteredRecipes);
           const match = appliancesFilter.search(recipe, tag);
           if (match == true) {
@@ -37,7 +37,7 @@ export class TagAlgo {
         });
         break;
       case "ustensil":
-        this.filteredRecipes = this.filteredRecipes.filter((recipe) => {
+        this.filteredRecipes = this.recipes.filter((recipe) => {
           const ustensilsFilter = new UtensilsSearch(this.filteredRecipes);
           const match = ustensilsFilter.search(recipe, tag);
           if (match == true) {

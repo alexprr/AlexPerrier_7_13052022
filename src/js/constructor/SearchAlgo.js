@@ -6,6 +6,7 @@ import {
 
 import { newFiltersList } from "../index.js";
 import { createRecipesCard } from "../index.js";
+import { TagSearch } from "../index.js";
 
 export class SearchAlgo {
   constructor(recipes) {
@@ -65,6 +66,7 @@ export class SearchAlgo {
       } else {
         this.searchedRecipes = this.recipes;
         this.recipes = recipes;
+        TagSearch.onSearch();
       }
     });
   }

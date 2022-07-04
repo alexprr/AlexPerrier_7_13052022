@@ -1,5 +1,4 @@
 import { CreateTag } from "./CreateTag.js";
-import { TagAlgo } from "./TagAlgo.js";
 import { TagSearch } from "../index.js";
 
 export class Tag {
