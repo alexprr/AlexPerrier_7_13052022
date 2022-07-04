@@ -1,15 +1,10 @@
 import { recipes } from "../data/recipes.js";
 import { RecipeCard } from "./constructor/RecipeCard.js";
 import { GenerateFilterLists } from "./constructor/GenerateFilterLists.js";
-import { CreateFilterLists, List } from "./constructor/CreateFilterLists.js";
-import { capitalizeString, normalizer } from "./utils/utils.js";
+import { List } from "./constructor/CreateFilterLists.js";
 import { SearchAlgo } from "./constructor/SearchAlgo.js";
 
-import {
-  IngredientSearch,
-  AppliancesSearch,
-  UtensilsSearch,
-} from "./constructor/SearchCriteria.js";
+import { TagAlgo } from "./constructor/TagAlgo.js";
 
 // Générer les listes de filtres
 function createDropdown(dropdown, type, list) {
@@ -164,53 +159,5 @@ createRecipesCard(recipes);
 export const Search = new SearchAlgo(recipes);
 Search.onSearch();
 
-// Tags Algo
-let filteredRecipes = [...recipes];
-
-export function TagAlgo() {
-  let TagsArray = Array.from(document.querySelectorAll(".searchtag__btn"));
-  if (TagsArray.length != 0) {
-    TagsArray.forEach((tags) => {
-      TagMatch(tags);
-    });
-    createRecipesCard(filteredRecipes);
-    newFiltersList(filteredRecipes);
-  } else {
-    createRecipesCard(recipes);
-    newFiltersList(recipes);
-  }
-}
-
-export function TagMatch(tag) {
-  const type = tag.getAttribute("data-type");
-  tag = tag.innerText.toLowerCase();
-  switch (type) {
-    case "ingredient":
-      filteredRecipes = filteredRecipes.filter((recipe) => {
-        const ingredientFilter = new IngredientSearch(filteredRecipes);
-        const match = ingredientFilter.search(recipe, tag);
-        if (match == true) {
-          return true;
-        }
-      });
-      break;
-    case "appliance":
-      filteredRecipes = filteredRecipes.filter((recipe) => {
-        const appliancesFilter = new AppliancesSearch(filteredRecipes);
-        const match = appliancesFilter.search(recipe, tag);
-        if (match == true) {
-          return true;
-        }
-      });
-      break;
-    case "ustensil":
-      filteredRecipes = filteredRecipes.filter((recipe) => {
-        const ustensilsFilter = new UtensilsSearch(filteredRecipes);
-        const match = ustensilsFilter.search(recipe, tag);
-        if (match == true) {
-          return true;
-        }
-      });
-      break;
-  }
-}
+// Tag Algo
+export const TagSearch = new TagAlgo();

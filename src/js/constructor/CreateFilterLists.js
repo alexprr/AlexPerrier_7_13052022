@@ -1,5 +1,6 @@
 import { Tag } from "./Tag.js";
-import { TagAlgo } from "../index.js";
+import { TagAlgo } from "./TagAlgo.js";
+import { TagSearch } from "../index.js";
 
 export class CreateFilterLists {
   constructor(filters, filterDOM, color) {
@@ -49,7 +50,7 @@ export class List {
       listContainer.appendChild(li);
       li.addEventListener("click", () => {
         new Tag(li.innerText, this.color, this.filterDOM.id);
-        TagAlgo();
+        TagSearch.onSearch();
       });
     });
   }
