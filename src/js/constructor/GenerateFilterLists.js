@@ -7,33 +7,49 @@ export class GenerateFilterLists {
 
   getIngredients() {
     let allIngredients = [];
-    this.recipes.map((recipe) =>
-      recipe.ingredients.map((ing) =>
-        allIngredients.push(capitalizeString(ing.ingredient.toLowerCase()))
-      )
-    );
-    allIngredients = this.removeDuplicate(allIngredients);
-    return allIngredients;
+    let allIngredientsItems = [];
+
+    for (let recipe of this.recipes) {
+      allIngredients.push(recipe.ingredients);
+    }
+
+    for (let ingredients of allIngredients) {
+      for (let items of ingredients) {
+        allIngredientsItems.push(capitalizeString(items.ingredient));
+      }
+    }
+
+    allIngredientsItems = this.removeDuplicate(allIngredientsItems);
+    return allIngredientsItems;
   }
 
   getAppliances() {
     let allAppliances = [];
-    this.recipes.forEach((recipe) =>
-      allAppliances.push(capitalizeString(recipe.appliance.toLowerCase()))
-    );
+
+    for (let recipe of this.recipes) {
+      allAppliances.push(capitalizeString(recipe.appliance.toLowerCase()));
+    }
+
     allAppliances = this.removeDuplicate(allAppliances);
     return allAppliances;
   }
 
   getUstensils() {
     let allUstensils = [];
-    this.recipes.map((recipe) =>
-      recipe.ustensils.map((ustensil) =>
-        allUstensils.push(capitalizeString(ustensil.toLowerCase()))
-      )
-    );
-    allUstensils = this.removeDuplicate(allUstensils);
-    return allUstensils;
+    let allUstensilsItems = [];
+
+    for (let recipes of this.recipes) {
+      allUstensils.push(recipes.ustensils);
+    }
+
+    for (let ustensils of allUstensils) {
+      for (let items of ustensils) {
+        allUstensilsItems.push(capitalizeString(items));
+      }
+    }
+
+    allUstensilsItems = this.removeDuplicate(allUstensilsItems);
+    return allUstensilsItems;
   }
 
   removeDuplicate(arr) {
