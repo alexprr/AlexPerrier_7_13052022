@@ -1,4 +1,3 @@
-import { recipes } from "../../data/recipes.js";
 import { Tag } from "./Tag.js";
 import { TagAlgo } from "../index.js";
 
@@ -21,22 +20,6 @@ export class List {
     this.filters = filters;
     this.color = color;
     this.displayFiltersList(this.filters);
-  }
-
-  manageSearchList(e) {
-    if (e.target.value.length > 2) {
-      const inputData = e.target.value.toLowerCase();
-      const newTabFilters = [];
-      this.filters.forEach((element) => {
-        const findIt = element.toLowerCase.includes(inputData);
-        if (findIt == true) {
-          newTabFilters.push(element);
-        }
-      });
-      this.displayFiltersList(newTabFilters);
-    } else {
-      this.displayFiltersList(this.filters);
-    }
   }
 
   displayFiltersList(filters) {
