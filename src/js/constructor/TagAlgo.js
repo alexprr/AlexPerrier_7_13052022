@@ -22,8 +22,8 @@ export class TagAlgo {
         this.filteredRecipes = this.recipes.filter((recipe) => {
           const ingredientFilter = new IngredientSearch(this.filteredRecipes);
           const match = ingredientFilter.search(recipe, tag);
-          if (match == true) {
-            return true;
+          if (match) {
+            return match;
           }
         });
         break;
@@ -31,8 +31,8 @@ export class TagAlgo {
         this.filteredRecipes = this.recipes.filter((recipe) => {
           const appliancesFilter = new AppliancesSearch(this.filteredRecipes);
           const match = appliancesFilter.search(recipe, tag);
-          if (match == true) {
-            return true;
+          if (match) {
+            return match;
           }
         });
         break;
@@ -40,8 +40,8 @@ export class TagAlgo {
         this.filteredRecipes = this.recipes.filter((recipe) => {
           const ustensilsFilter = new UtensilsSearch(this.filteredRecipes);
           const match = ustensilsFilter.search(recipe, tag);
-          if (match == true) {
-            return true;
+          if (match) {
+            return match;
           }
         });
         break;

@@ -1,42 +1,25 @@
 import { Tag } from "./Tag.js";
-import { TagAlgo } from "./TagAlgo.js";
 import { TagSearch } from "../index.js";
 
 export class CreateFilterLists {
-  constructor(filters, filterDOM, color) {
+  constructor(filters, filterDOM, type) {
     this.filters = filters;
     this.filterDOM = filterDOM;
-    this.color = color;
+    this.type = type;
     this.createFiltersList(this.filters);
   }
 
   createFiltersList(filters) {
-    new List(this.filterDOM, filters, this.color);
+    new List(this.filterDOM, filters, this.type);
   }
 }
 
 export class List {
-  constructor(filterDOM, filters, color) {
+  constructor(filterDOM, filters, type) {
     this.filterDOM = filterDOM;
     this.filters = filters;
-    this.color = color;
+    this.type = type;
     this.displayFiltersList(this.filters);
-  }
-
-  manageSearchList(e) {
-    if (e.target.value.length > 2) {
-      const inputData = e.target.value.toLowerCase();
-      const newTabFilters = [];
-      this.filters.forEach((element) => {
-        const findIt = element.toLowerCase.includes(inputData);
-        if (findIt == true) {
-          newTabFilters.push(element);
-        }
-      });
-      this.displayFiltersList(newTabFilters);
-    } else {
-      this.displayFiltersList(this.filters);
-    }
   }
 
   displayFiltersList(filters) {
@@ -49,7 +32,7 @@ export class List {
       li.style.cursor = "pointer";
       listContainer.appendChild(li);
       li.addEventListener("click", () => {
-        new Tag(li.innerText, this.color, this.filterDOM.id);
+        new Tag(li.innerText, this.type, this.filterDOM.id);
         TagSearch.onSearch();
       });
     });

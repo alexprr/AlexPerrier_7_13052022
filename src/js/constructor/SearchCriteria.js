@@ -26,7 +26,9 @@ export class IngredientSearch extends SearchCriteria {
   filterRecipes(element, query) {
     const ingredients = element.ingredients;
     for (let ingredient of ingredients) {
-      return ingredient.ingredient.toLowerCase().indexOf(query) >= 0;
+      if (ingredient.ingredient.toLowerCase() === query) {
+        return true;
+      }
     }
   }
 }
@@ -47,7 +49,8 @@ export class AppliancesSearch extends SearchCriteria {
   }
 
   filterRecipes(element, query) {
-    return element.appliance.toLowerCase().includes(query);
+    if (element.appliance.toLowerCase() === query) return true;
+    // return element.appliance.toLowerCase().includes(query);
   }
 }
 
@@ -59,7 +62,7 @@ export class UtensilsSearch extends SearchCriteria {
   filterRecipes(element, query) {
     const ustensils = element.ustensils;
     for (let ustensil of ustensils) {
-      if (ustensil.toLowerCase().includes(query)) {
+      if (ustensil.toLowerCase() === query) {
         return true;
       }
     }
