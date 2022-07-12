@@ -1,5 +1,5 @@
 import { CreateTag } from "./CreateTag.js";
-import { TagSearch } from "../index.js";
+import { Search } from "../../index.js";
 
 export class Tag {
   constructor(filter, color, type) {
@@ -20,6 +20,6 @@ export class Tag {
   removeTag(e) {
     let element = e.target;
     element.parentNode.remove(element);
-    TagSearch.onSearch();
+    Search.onTagSearch();
   }
 }

@@ -245,9 +245,6 @@
   padding: 0;
   list-style-type: none;
   overflow: hidden;
-  display: -webkit-box !important;
-  -webkit-line-clamp: 6;
-  -webkit-box-orient: vertical;
   text-overflow: ellipsis;
   white-space: normal;
 }

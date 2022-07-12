@@ -1,4 +1,4 @@
-import { capitalizeString } from "../utils/utils.js";
+import { capitalizeString } from "../../utils/utils.js";
 
 export class GenerateFilterLists {
   constructor(recipes) {
@@ -20,7 +20,7 @@ export class GenerateFilterLists {
     }
 
     allIngredientsItems = this.removeDuplicate(allIngredientsItems);
-    return allIngredientsItems;
+    return allIngredientsItems.sort();
   }
 
   getAppliances() {
@@ -31,7 +31,7 @@ export class GenerateFilterLists {
     }
 
     allAppliances = this.removeDuplicate(allAppliances);
-    return allAppliances;
+    return allAppliances.sort();
   }
 
   getUstensils() {
@@ -49,7 +49,7 @@ export class GenerateFilterLists {
     }
 
     allUstensilsItems = this.removeDuplicate(allUstensilsItems);
-    return allUstensilsItems;
+    return allUstensilsItems.sort();
   }
 
   removeDuplicate(arr) {

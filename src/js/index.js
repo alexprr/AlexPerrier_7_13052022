@@ -1,10 +1,8 @@
 import { recipes } from "../data/recipes.js";
-import { RecipeCard } from "./constructor/RecipeCard.js";
-import { GenerateFilterLists } from "./constructor/GenerateFilterLists.js";
-import { List } from "./constructor/CreateFilterLists.js";
-import { SearchAlgo } from "./constructor/SearchAlgo.js";
-
-import { TagAlgo } from "./constructor/TagAlgo.js";
+import { RecipeCard } from "../js/constructor/Recipes/RecipeCard.js";
+import { GenerateFilterLists } from "../js/constructor/Lists/GenerateFilterLists.js";
+import { List } from "../js/constructor/Lists/CreateFilterLists.js";
+import { SearchAlgo } from "../js/constructor/Algo/SearchAlgo.js";
 
 // Générer les listes de filtres
 function createDropdown(dropdown, type, list) {
@@ -158,6 +156,3 @@ createRecipesCard(recipes);
 // Main Algo
 export const Search = new SearchAlgo(recipes);
 Search.onSearch();
-
-// Tag Algo
-export const TagSearch = new TagAlgo();

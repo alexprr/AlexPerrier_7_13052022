@@ -1,5 +1,5 @@
-import { Tag } from "./Tag.js";
-import { TagSearch } from "../index.js";
+import { Tag } from "../Tags/Tag.js";
+import { Search } from "../../index.js";
 
 export class CreateFilterLists {
   constructor(filters, filterDOM, type) {
@@ -33,7 +33,7 @@ export class List {
       listContainer.appendChild(li);
       li.addEventListener("click", () => {
         new Tag(li.innerText, this.type, this.filterDOM.id);
-        TagSearch.onSearch();
+        Search.onTagSearch();
       });
     });
   }
